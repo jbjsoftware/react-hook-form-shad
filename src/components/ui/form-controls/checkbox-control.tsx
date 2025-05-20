@@ -39,23 +39,27 @@ export function CheckboxControl<
       name={name}
       disabled={disabled}
       render={({ field }) => (
-        <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4">
-          <FormControl>
-            <Checkbox
-              checked={field.value}
-              onCheckedChange={field.onChange}
-              disabled={disabled}
-            />
-          </FormControl>
-          {label && (
-            <div className="space-y-1 leading-none">
-              <FormLabel className={hasError ? "text-destructive" : ""}>
-                {label}
-                {required && <span className="ml-1">*</span>}
-              </FormLabel>
-              {description && <FormDescription>{description}</FormDescription>}
-            </div>
-          )}
+        <FormItem className="flex flex-col space-y-1 rounded-md p-4">
+          <div className="flex flex-row items-center space-x-3">
+            <FormControl>
+              <Checkbox
+                checked={field.value}
+                onCheckedChange={field.onChange}
+                disabled={disabled}
+              />
+            </FormControl>
+            {label && (
+              <div className="space-y-1 leading-none">
+                <FormLabel className={hasError ? "text-destructive" : ""}>
+                  {label}
+                  {required && <span className="ml-1">*</span>}
+                </FormLabel>
+                {description && (
+                  <FormDescription>{description}</FormDescription>
+                )}
+              </div>
+            )}
+          </div>
           <FormMessage />
         </FormItem>
       )}
