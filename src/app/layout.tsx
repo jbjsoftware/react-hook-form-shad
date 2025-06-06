@@ -6,6 +6,7 @@ import { SidebarInset } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
+import { SliderProvider } from "@/lib/slider-context-ref";
 
 import "./globals.css";
 
@@ -40,19 +41,21 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="[--header-height:calc(--spacing(14))]">
-            <SidebarProvider className="flex flex-col">
-              <SiteHeader />
-              <div className="flex flex-1">
-                <AppSidebar />
-                <SidebarInset>
-                  <div className="flex flex-1 flex-col p-4 pt-0">
-                    {children}
-                  </div>
-                </SidebarInset>
-              </div>
-            </SidebarProvider>
-          </div>
+          <SliderProvider>
+            <div className="[--header-height:calc(--spacing(14))]">
+              <SidebarProvider className="flex flex-col">
+                <SiteHeader />
+                <div className="flex flex-1">
+                  <AppSidebar />
+                  <SidebarInset>
+                    <div className="flex flex-1 flex-col p-4 pt-0">
+                      {children}
+                    </div>
+                  </SidebarInset>
+                </div>
+              </SidebarProvider>
+            </div>
+          </SliderProvider>
         </ThemeProvider>
       </body>
     </html>
